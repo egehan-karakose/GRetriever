@@ -1,0 +1,16 @@
+PODS:
+  - GRetriever (0.1.0)
+
+DEPENDENCIES:
+  - GRetriever (from `../`)
+
+EXTERNAL SOURCES:
+  GRetriever:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  GRetriever: 30f68ea530da8c5c73c7387ec668055c9443b804
+
+PODFILE CHECKSUM: b2a33a76064ed9d001af974d8f0a05c0449ed18e
+
+COCOAPODS: 1.11.3

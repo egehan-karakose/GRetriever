@@ -1,0 +1,6 @@
+framework module Pods_GRetriever_Example {
+  umbrella header "Pods-GRetriever_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,6 @@
+framework module GRetriever {
+  umbrella header "GRetriever-umbrella.h"
+
+  export *
+  module * { export * }
+}
