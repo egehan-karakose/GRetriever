@@ -21,11 +21,11 @@ s.description      = <<-DESC
 "GRetriever is a framework that allows to make API call with most simplest way."
                      DESC
 
-  s.homepage         = 'https://github.com/egehan205/GRetriever'
+  s.homepage         = 'https://github.com/egehan-karakose/GRetriever'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'egehan205' => 'egehankarakose@gmail.com.tr' }
-  s.source           = { :git => 'https://github.com/egehan205/GRetriever.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/egehan-karakose/GRetriever.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '10.0'

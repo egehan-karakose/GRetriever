@@ -1,6 +1,6 @@
 # GRetriever
 
-[![CI Status](https://img.shields.io/travis/egehan205/GRetriever.svg?style=flat)](https://travis-ci.org/egehan205/GRetriever)
+[![CI Status](https://img.shields.io/travis/egehan-karakose/GRetriever.svg?style=flat)](https://travis-ci.org/egehan-karakose/GRetriever)
 [![Version](https://img.shields.io/cocoapods/v/GRetriever.svg?style=flat)](https://cocoapods.org/pods/GRetriever)
 [![License](https://img.shields.io/cocoapods/l/GRetriever.svg?style=flat)](https://cocoapods.org/pods/GRetriever)
 [![Platform](https://img.shields.io/cocoapods/p/GRetriever.svg?style=flat)](https://cocoapods.org/pods/GRetriever)
@@ -22,7 +22,7 @@ pod 'GRetriever'
 
 ## Author
 
-egehan205, Egehan.KARAKOSE@vakifbank.com.tr
+egehan205, egehankarakose@gmail.com
 
 ## License
 
