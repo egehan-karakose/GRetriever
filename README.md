@@ -22,7 +22,7 @@ pod 'GRetriever'
 
 ## Author
 
-egehan205, egehankarakose@gmail.com
+egehan-karakose, egehankarakose@gmail.com
 
 ## License
 
