@@ -9,23 +9,39 @@ import UIKit
 
 public typealias Parameters = [String: Any]
 
+public struct Query {
+    let key: String
+    let value: String
+    
+    public init(key: String, value: String) {
+        self.key = key
+        self.value = value
+    }
+}
+
 public class Endpoint {
+    var baseURL: URL
     var path: String
     var parameters: Parameters
     var httpMethod: HTTPMethod
     var httpTask: HTTPTask
     var httpHeaders: HTTPHeaders
+    var queries: [Query]
     
-    public init(path: String,
+    public init(baseURL: URL,
+                path: String,
                 parameters: Parameters = [:],
                 httpMethod: HTTPMethod,
                 httpTask: HTTPTask,
-                httpHeaders: HTTPHeaders = .json()) {
+                httpHeaders: HTTPHeaders = .json(),
+                queries: [Query] = []) {
+        self.baseURL = baseURL
         self.path = path
         self.parameters = parameters
         self.httpMethod = httpMethod
         self.httpTask = httpTask
         self.httpHeaders = httpHeaders
+        self.queries = queries
     }
 }
 
@@ -34,6 +50,7 @@ public protocol Retrieve {
 }
 
 public protocol EndpointType: Retrieve {
+    var baseURL: URL { get }
     var path: String { get }
     var parameters: Parameters { get }
     var httpMethod: HTTPMethod { get }
@@ -48,7 +65,11 @@ public extension EndpointType {
     func requestCompleted() {}
     
     var endpoint: Endpoint {
-        return Endpoint(path: path, parameters: parameters, httpMethod: httpMethod, httpTask: httpTask, httpHeaders: httpHeaders)
+        return Endpoint(baseURL: baseURL, path: path, parameters: parameters, httpMethod: httpMethod, httpTask: httpTask, httpHeaders: httpHeaders, queries: queries)
+    }
+    
+    var baseURL: URL {
+        return URL(string: "")!
     }
     
     var path: String {
@@ -67,16 +88,23 @@ public extension EndpointType {
         return .request
     }
     
-    // Default HTTPHeader value is json. If you wanna change,
-    // please add "var httpHeaders: HTTPHeaders" to your enum which was implemented EndpointType
+    var queries: [Query] {
+        return []
+    }
+    
     var httpHeaders: HTTPHeaders {
         return .json()
     }
     
-    func buildRequest() throws -> URLRequest? {
-        guard let url = URL(string: endpoint.path) else { return nil }
+    func buildRequest() throws -> URLRequest {
+        var url = URLComponents(url: endpoint.baseURL.appendingPathComponent(endpoint.path), resolvingAgainstBaseURL: false)
+        if !endpoint.queries.isEmpty {
+            url?.queryItems = endpoint.queries.compactMap({ item in
+                return URLQueryItem(name: item.key, value: item.value)
+            })
+        }
         
-        var request = URLRequest(url: url,
+        var request = URLRequest(url: (url?.url) ?? endpoint.baseURL.appendingPathComponent(endpoint.path),
                                  cachePolicy: .reloadIgnoringLocalAndRemoteCacheData,
                                  timeoutInterval: 60.0)
         
@@ -97,7 +125,6 @@ public extension EndpointType {
         } catch {
             throw error
         }
-        
     }
     
     private func configureParameters(parameters: Parameters?, encoding: ParameterEncoding, request: inout URLRequest) throws {

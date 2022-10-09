@@ -97,7 +97,8 @@ enum Gender: String, Codable {
 // MARK: ENDPOINT
 public enum Swapi {
     static func getPeople() -> Endpoint {
-        Endpoint(path: "https://swapi.dev/api/people/",
+        return Endpoint(baseURL:  URL(string: "https://swapi.dev")!,
+                 path: "/api/people/",
                  httpMethod: .get,
                  httpTask: .request,
                  httpHeaders: HTTPHeaders.json([HeaderModel(key: "Content-Type", value: "application/json")]))
