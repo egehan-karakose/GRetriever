@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'GRetriever'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = 'GRetriever makes API call easy way.'
 
 # This description is used to generate tags and improve search results.
@@ -24,7 +24,7 @@ s.description      = <<-DESC
   s.homepage         = 'https://github.com/egehan-karakose/GRetriever'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'egehan205' => 'egehankarakose@gmail.com.tr' }
+  s.author           = { 'egehan-karakose' => 'egehankarakose@gmail.com.tr' }
   s.source           = { :git => 'https://github.com/egehan-karakose/GRetriever.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
